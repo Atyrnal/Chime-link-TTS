@@ -31,6 +31,16 @@ const rest = new REST({ version: '10' }).setToken(token);
 			Routes.applicationCommands(clientId),
 			{ body: commands },
 		);
+    if (process.env.DISCORD_DEV_GUILD) {
+      try {
+        rest.put(
+          Routes.applicationGuildCommands(clientId, process.env.DISCORD_DEV_GUILD), // guild-specific
+          { body: commands }
+        );
+      } catch (err) {
+        console.log(err)
+      }
+    }
 
 		console.log(`Successfully reloaded ${data.length} application (/) commands.`);
     fs.writeFileSync(path.join(__dirname, "commandRegister.json"), JSON.stringify(commands.map(command => JSON.stringify(command)), null, 2));
