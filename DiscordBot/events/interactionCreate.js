@@ -1,7 +1,7 @@
 const { Events } = require('discord.js')
 
 module.exports = {
-    name: Events.InteractionCreate,
+    type: Events.InteractionCreate,
     async execute(interaction) { //Runs when any command is run
         if (interaction.isChatInputCommand()) { //if interaction is slash command
             const command = interaction.client.commands.get(interaction.commandName);
