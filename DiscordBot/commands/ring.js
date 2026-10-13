@@ -6,7 +6,9 @@ module.exports = {
     data: new SlashCommandBuilder() //Create slash command
         .setName('ring')
         .setDescription('Ring the doorbell'),
-    async execute(interaction) { 
+    async execute(interaction) {
+        //await interaction.deferReply();
+        console.log(`Flask server url: ${interaction.client.flaskServer}`)
         try {
             const response = await axios.post(`${interaction.client.flaskServer}/RING`);
             console.log(response.data);

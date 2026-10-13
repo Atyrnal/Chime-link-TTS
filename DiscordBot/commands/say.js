@@ -11,6 +11,7 @@ module.exports = {
                 .setDescription("The message to send")
         ),
     async execute(interaction) {
+        //await interaction.deferReply();
         const text = interaction.options.getString("message", true) //Get command parameter value
         try {
             const response = await axios.post(`${interaction.client.flaskServer}/TTS`, { text });

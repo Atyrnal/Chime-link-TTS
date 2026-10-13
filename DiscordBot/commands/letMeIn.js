@@ -6,6 +6,7 @@ module.exports = {
         .setName('let-me-in')
         .setDescription('Make the doorbell ask if you can be let in') ,
     async execute(interaction) {
+        //await interaction.deferReply();
         const text = `${interaction.user.displayName} is at the door and needs to be let in.`
         try {
             const response = await axios.post(`${interaction.client.flaskServer}/TTS`, { text });
